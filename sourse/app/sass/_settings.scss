@@ -1,0 +1,95 @@
+
+// Подключаем локальный шрифты из Миксина
+// @include font-face(socialico, 'socialico');
+// @include font-face(Rockwell Std Light, 'RockwellStdLight_38432');
+
+// Переменные для шрифтов
+$Arial: 'Arial', sans-serif;
+
+//оформление надписей
+@mixin font-type ($color, $font-family, $font-size, $font-weight, $line-height) {
+	color: $color;
+	font-family: $font-family;
+	font-size: $font-size;
+	font-weight: $font-weight;
+	line-height: $line-height;
+}
+
+
+//адаптация
+@mixin respond-to($media) {
+	@if $media == mobile {
+		@media only screen and (max-width: 320px) { @content; }
+	}
+	@else if $media == xs {
+		@media only screen and (max-width: 481px) { @content; }
+	}
+	@else if $media == sm {
+		@media only screen and (max-width: 767px) { @content; }
+	}
+	@else if $media == md {
+		@media only screen and (max-width: 991px) { @content; }
+	}
+	@else if $media == lg {
+		@media only screen and (max-width: 1199px) { @content; }
+	}
+	@else if $media == desktop {
+		@media only screen and (max-width: 1300px) { @content; }
+	}
+}
+
+//@include respond-to(desktop) {background: none; };
+//@include respond-to(lg) { background: orange; };
+//@include respond-to(md) { background: green; };
+//@include respond-to(sm) { background: blue; };
+//@include respond-to(xs) { background: black; };
+//@include respond-to(mobile) { background: red; };
+
+//сброс float
+@mixin float-clear {
+	content: '';
+	width: 100%;
+	display: table;
+	clear: both;
+}
+
+//стиль для placeholder
+@mixin placeholder-hide {
+	::-webkit-input-placeholder {@content}
+	:-moz-placeholder           {@content}
+	::-moz-placeholder          {@content}
+	:-ms-input-placeholder      {@content}
+	//убрать placeholder при клике
+	:focus::-webkit-input-placeholder {color: transparent}
+	:focus::-moz-placeholder          {color: transparent}
+	:focus:-moz-placeholder           {color: transparent}
+	:focus:-ms-input-placeholder      {color: transparent}
+}
+
+html {
+	// height hack
+	min-height:100%;
+	//height:auto !important;
+	height:100%;
+}
+
+body {
+	// height hack
+	min-height:100%;
+	//height:auto !important;
+	height:100%;
+	//SMOOTH FONT
+	-webkit-font-smoothing: subpixel-antialiased;
+	box-sizing: border-box;
+}
+body * {box-sizing: border-box;}
+
+body.onload {overflow:hidden;}
+
+// HAPPY BROWSER
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
